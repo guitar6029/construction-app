@@ -1,0 +1,7 @@
+export enum Status {
+  PLANNING = "PLANNING",
+  ACTIVE = "ACTIVE",
+  ON_HOLD = "ON_HOLD",
+  COMPLETED = "COMPLETED",
+  CANCELLED = "CANCELLED",
+}
