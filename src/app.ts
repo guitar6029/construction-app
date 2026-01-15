@@ -1,6 +1,7 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { logger } from "hono/logger";
 import HealthRouter from "./routes/health.routes";
+import ProjectsRouter from "./routes/projects.routes";
 const app = new OpenAPIHono();
 
 app.use(logger());
@@ -10,6 +11,7 @@ app.get("/", (c) => {
 });
 
 app.route("/health", HealthRouter);
+app.route("/projects", ProjectsRouter);
 
 app.notFound((c) => {
   return c.text("Page does not exist - 404", 404);
