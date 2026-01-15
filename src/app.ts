@@ -17,4 +17,12 @@ app.notFound((c) => {
   return c.text("Page does not exist - 404", 404);
 });
 
+app.doc("/doc", {
+  openapi: "3.0.0",
+  info: {
+    version: "1.0.0",
+    title: "My API",
+  },
+});
+
 export default app;
