@@ -7,7 +7,7 @@ export const ProjectSchema = z.object({
   description: z.string(),
   status: z.enum(Status),
   startDate: z.iso.date(),
-  endDate: z.iso.date().optional,
+  endDate: z.iso.date().optional(),
   estimatedCompletionDate: z.iso.date(),
   projectManagerId: z.uuid(),
   clientName: z.string(),
@@ -17,3 +17,5 @@ export const ProjectSchema = z.object({
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 });
+
+export type Project = z.infer<typeof ProjectSchema>;

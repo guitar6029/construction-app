@@ -1,8 +1,11 @@
-import { Hono } from "hono";
-const router = new Hono();
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { listProjects } from "@/services/projectService";
+import { listProjectsRoute } from "./contracts/project.contract";
+const router = new OpenAPIHono();
 
-router.get("/", (c) => {
-  return c.json([]);
+router.openapi(listProjectsRoute, async (c) => {
+  const projects = await listProjects();
+  return c.json(projects);
 });
 
 router.post("/", (c) => {
