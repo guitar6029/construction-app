@@ -11,3 +11,7 @@ const dialect = new PostgresDialect({
     port: Number(process.env.PGPORT),
   }),
 });
+
+export const db = new Kysely<Database>({
+  dialect,
+});
