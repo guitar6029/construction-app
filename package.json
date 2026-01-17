@@ -1,7 +1,8 @@
 {
   "name": "construction-app",
   "scripts": {
-    "dev": "bun run --hot src/server.ts"
+    "dev": "bun run --hot src/server.ts",
+    "migrate": "tsx src/db/migrate.ts"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.5.3",

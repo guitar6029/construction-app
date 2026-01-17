@@ -1,20 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { Kysely, Migrator, FileMigrationProvider } from "kysely";
-import { Pool } from "pg";
-import { PostgresDialect } from "kysely";
-
-const db = new Kysely({
-  dialect: new PostgresDialect({
-    pool: new Pool({
-      host: process.env.PGHOST,
-      port: Number(process.env.PGPORT),
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
-    }),
-  }),
-});
+import { Migrator, FileMigrationProvider } from "kysely";
+import { db } from "./index";
 
 const migrator = new Migrator({
   db,
@@ -26,22 +13,26 @@ const migrator = new Migrator({
 });
 
 async function migrate() {
-  const { error, results } = await migrator.migrateToLatest();
+  try {
+    const { error, results } = await migrator.migrateToLatest();
 
-  results?.forEach((migration) => {
-    if (migration.status === "Success") {
-      console.log(`✅ ${migration.migrationName}`);
-    } else {
-      console.error(`❌ ${migration.migrationName}`);
+    results?.forEach((migration) => {
+      if (migration.status === "Success") {
+        console.log(`✅ ${migration.migrationName}`);
+      } else {
+        console.error(`❌ ${migration.migrationName}`);
+      }
+    });
+
+    if (error) {
+      console.error("Migration failed", error);
+      process.exitCode = 1;
     }
-  });
-
-  if (error) {
-    console.error("Migration failed", error);
-    process.exit(1);
+  } catch (err) {
+    console.error("Migration crashed", err);
+  } finally {
+    await db.destroy();
   }
-
-  await db.destroy();
 }
 
 migrate();
