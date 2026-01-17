@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { Migrator, FileMigrationProvider } from "kysely";
 import { db } from "./index";
+import "dotenv/config";
 
 const migrator = new Migrator({
   db,
