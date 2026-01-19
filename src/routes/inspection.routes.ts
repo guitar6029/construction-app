@@ -1,6 +1,9 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { getInspectionsRoute } from "./contracts/inspection.contract";
-import { getInspections } from "@/services/inspectionService";
+import {
+  getInspectionRoute,
+  getInspectionsRoute,
+} from "./contracts/inspection.contract";
+import { getInspection, getInspections } from "@/services/inspectionService";
 
 const router = new OpenAPIHono();
 
@@ -12,11 +15,11 @@ router.openapi(getInspectionsRoute, async (c) => {
 
 // //  GET single
 
-// router.openapi(getInspectionRoute, async (c) => {
-//   const { inspectionId } = c.req.valid("param");
-//   const inspection = await getInspection(inspectionId);
-//   return c.json(inspection);
-// });
+router.openapi(getInspectionRoute, async (c) => {
+  const { inspectionId } = c.req.valid("param");
+  const inspection = await getInspection(inspectionId);
+  return c.json(inspection);
+});
 
 // // POST
 // router.openapi(createInspectionRoute, async (c) => {
