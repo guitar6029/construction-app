@@ -61,3 +61,28 @@ export const createInspectionRoute = createRoute({
     },
   },
 });
+
+export const updateInspectionRoute = createRoute({
+  method: "patch",
+  path: "/{inspectionId}",
+  request: {
+    params: InspectionIdParamsSchema,
+    body: {
+      content: {
+        "application/json": {
+          schema: CreateInspectionSchema,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      content: {
+        "application/json": {
+          schema: InspectionSchema,
+        },
+      },
+      description: "Updated single project",
+    },
+  },
+});
