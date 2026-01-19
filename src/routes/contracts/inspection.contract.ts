@@ -1,4 +1,5 @@
 import {
+  CreateInspectionSchema,
   InspectionIdParamsSchema,
   InspectionSchema,
 } from "@/schemas/Inspection";
@@ -21,7 +22,7 @@ export const getInspectionsRoute = createRoute({
 
 export const getInspectionRoute = createRoute({
   method: "get",
-  path: "/",
+  path: "/{inspectionId}",
   request: {
     params: InspectionIdParamsSchema,
   },
@@ -33,6 +34,30 @@ export const getInspectionRoute = createRoute({
         },
       },
       description: "Retrieve inspection",
+    },
+  },
+});
+
+export const createInspectionRoute = createRoute({
+  method: "post",
+  path: "/",
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: CreateInspectionSchema,
+        },
+      },
+    },
+  },
+  responses: {
+    201: {
+      content: {
+        "application/json": {
+          schema: InspectionSchema,
+        },
+      },
+      description: "Create Inspection",
     },
   },
 });

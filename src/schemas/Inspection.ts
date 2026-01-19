@@ -13,4 +13,9 @@ export const InspectionSchema = z.object({
   updatedAt: z.iso.datetime(),
 });
 
+export const CreateInspectionSchema = z.object({
+  status: z.enum(InspectionStatus),
+});
+
 export type Inspection = z.infer<typeof InspectionSchema>;
+export type CreateInspection = z.infer<typeof CreateInspectionSchema>;
