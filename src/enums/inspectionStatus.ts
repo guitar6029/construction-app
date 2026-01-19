@@ -1,0 +1,7 @@
+export enum InspectionStatus {
+  SCHEDULED = "SCHEDULED",
+  IN_PROGRESS = "IN_PROGRESS",
+  PASSED = "PASSED",
+  FAILED = "FAILED",
+  CANCELLED = "CANCELLED",
+}

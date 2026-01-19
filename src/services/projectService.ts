@@ -4,7 +4,7 @@ import {
   UpdateProjectIinput,
 } from "@/schemas/Project";
 import { Status } from "@/enums/status";
-export async function listProjects(): Promise<Project[]> {
+export async function getProjects(): Promise<Project[]> {
   return [
     {
       id: "8f9e4d1a-7c2b-4f0a-9a5e-3c1b9e0f4a11",
@@ -67,7 +67,7 @@ export async function getProject(projectId: string): Promise<Project> {
 }
 
 export async function createProject(
-  project: CreateProjectInput
+  project: CreateProjectInput,
 ): Promise<Project> {
   return {
     id: "2d4a1c9f-5a7e-4b8c-8c7d-9e1f3a6b2d99",
@@ -91,7 +91,7 @@ export async function createProject(
 
 export async function updateProject(
   projectId: string,
-  payload: UpdateProjectIinput
+  payload: UpdateProjectIinput,
 ): Promise<Project> {
   // find the proejct , if exists, update the project properties
   // else throw error not found

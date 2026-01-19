@@ -1,10 +1,10 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import {
-  listProjects,
   getProject,
   createProject,
   deleteProject,
   updateProject,
+  getProjects,
 } from "@/services/projectService";
 import {
   listProjectsRoute,
@@ -17,7 +17,7 @@ const router = new OpenAPIHono();
 
 /** GET  list of projects*/
 router.openapi(listProjectsRoute, async (c) => {
-  const projects = await listProjects();
+  const projects = await getProjects();
   return c.json(projects);
 });
 
