@@ -1,10 +1,11 @@
-import { Status } from "@/enums/status";
+import { ProjectStatus } from "@/enums/status";
+import { Generated } from "kysely";
 
 export interface ProjectsTable {
-  id: string;
+  id: Generated<string>;
   name: string;
   client_name: string;
-  status: Status;
-  created_at: Date;
-  updated_at: Date;
+  status: ProjectStatus;
+  created_at: Generated<Date>;
+  updated_at: Generated<Date>;
 }

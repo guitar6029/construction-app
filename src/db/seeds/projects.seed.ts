@@ -12,7 +12,11 @@ export async function seedProjects(db: Kysely<Database>) {
         client_name: "ACME",
         status: ProjectStatus.Active,
       },
-      { name: "Sunset Plaza", client_name: "Beacon Group", status: "planning" },
+      {
+        name: "Sunset Plaza",
+        client_name: "Beacon Group",
+        status: ProjectStatus.Planning,
+      },
     ])
     .returning(["id", "name"])
     .execute();
