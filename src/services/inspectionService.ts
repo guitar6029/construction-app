@@ -1,5 +1,9 @@
 import { InspectionStatus } from "@/enums/inspectionStatus";
-import { CreateInspection, Inspection } from "@/schemas/Inspection";
+import {
+  CreateInspection,
+  Inspection,
+  UpdateProjectIinput,
+} from "@/schemas/Inspection";
 
 export async function getInspections(): Promise<Inspection[]> {
   return [
@@ -44,7 +48,7 @@ export async function createInspection(
 
 export async function updateInspection(
   inspectionId: string,
-  payload: CreateInspection,
+  payload: UpdateProjectIinput,
 ): Promise<Inspection> {
   return {
     id: "8f6c1b7e-2f7a-4c6b-bd9a-9b4e0f7c3a21",
@@ -53,4 +57,14 @@ export async function updateInspection(
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
+}
+
+export async function deleteInspection(inspectionId: string): Promise<void> {
+  //for now its false
+  const exists = false;
+  if (!exists) {
+    throw new Error("Inspection not found");
+  }
+
+  // delete logic
 }

@@ -93,7 +93,7 @@ export async function updateProject(
   projectId: string,
   payload: UpdateProjectIinput,
 ): Promise<Project> {
-  // find the proejct , if exists, update the project properties
+  // find the project , if exists, update the project properties
   // else throw error not found
   return {
     id: "2d4a1c9f-5a7e-4b8c-8c7d-9e1f3a6b2d99",

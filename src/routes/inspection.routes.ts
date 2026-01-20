@@ -1,12 +1,14 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import {
   createInspectionRoute,
+  deleteInspectionRoute,
   getInspectionRoute,
   getInspectionsRoute,
   updateInspectionRoute,
 } from "./contracts/inspection.contract";
 import {
   createInspection,
+  deleteInspection,
   getInspection,
   getInspections,
   updateInspection,
@@ -43,10 +45,11 @@ router.openapi(updateInspectionRoute, async (c) => {
   return c.json(updated);
 });
 
-// // DELETE
+// DELETE
+router.openapi(deleteInspectionRoute, async (c) => {
+  const { inspectionId } = c.req.valid("param");
+  await deleteInspection(inspectionId);
+  return c.body(null, 204);
+});
 
-// router.openapi(deleteInspectionRoute, async (c) => {
-//   const { inspectionId } = c.req.valid("param");
-//   await deleteInspection(inspectionId);
-//   return c.body(null, 204);
-// });
+export default router;

@@ -2,6 +2,7 @@ import { OpenAPIHono } from "@hono/zod-openapi";
 import { logger } from "hono/logger";
 import HealthRouter from "./routes/health.routes";
 import ProjectsRouter from "./routes/projects.routes";
+import InspectionsRouter from "./routes/inspection.routes";
 import { swaggerUI } from "@hono/swagger-ui";
 const app = new OpenAPIHono();
 
@@ -13,6 +14,7 @@ app.get("/", (c) => {
 
 app.route("/health", HealthRouter);
 app.route("/projects", ProjectsRouter);
+app.route("/inspections", InspectionsRouter);
 
 // Swagger UI
 app.get("/docs", swaggerUI({ url: "/doc" }));

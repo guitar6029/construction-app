@@ -7,7 +7,7 @@ import {
   getProjects,
 } from "@/services/projectService";
 import {
-  listProjectsRoute,
+  getProjectsRoute,
   getProjectRoute,
   createProjectRoute,
   deleteProjectRoute,
@@ -16,7 +16,7 @@ import {
 const router = new OpenAPIHono();
 
 /** GET  list of projects*/
-router.openapi(listProjectsRoute, async (c) => {
+router.openapi(getProjectsRoute, async (c) => {
   const projects = await getProjects();
   return c.json(projects);
 });
