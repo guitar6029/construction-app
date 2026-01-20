@@ -1,12 +1,6 @@
 import { Kysely, sql } from "kysely";
 
 export async function up(db: Kysely<any>): Promise<void> {
-  //needed for uuid
-  await db.executeQuery(
-    sql`CREATE EXTENSION IF NOT EXISTS pgcrypto`.compile(db),
-  );
-
-  //create the table
   await db.schema
     .createTable("projects")
     .addColumn("id", "uuid", (col) =>
@@ -14,7 +8,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     )
     .addColumn("name", "text", (col) => col.notNull())
     .addColumn("client_name", "text", (col) => col.notNull())
-    .addColumn("status", "text", (col) => col.notNull())
+    .addColumn("status", sql`project_status`, (col) => col.notNull())
     .addColumn("created_at", "timestamptz", (col) =>
       col.defaultTo(sql`now()`).notNull(),
     )

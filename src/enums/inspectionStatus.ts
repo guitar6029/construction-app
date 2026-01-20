@@ -1,7 +1,7 @@
 export enum InspectionStatus {
-  SCHEDULED = "SCHEDULED",
-  IN_PROGRESS = "IN_PROGRESS",
-  PASSED = "PASSED",
-  FAILED = "FAILED",
-  CANCELLED = "CANCELLED",
+  Scheduled = "scheduled",
+  InProgress = "in_progress",
+  Passed = "passed",
+  Failed = "failed",
+  Cancelled = "cancelled",
 }

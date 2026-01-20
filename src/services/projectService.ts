@@ -3,7 +3,7 @@ import {
   Project,
   UpdateProjectIinput,
 } from "@/schemas/Project";
-import { Status } from "@/enums/status";
+import { ProjectStatus } from "@/enums/status";
 export async function getProjects(): Promise<Project[]> {
   return [
     {
@@ -12,7 +12,7 @@ export async function getProjects(): Promise<Project[]> {
       code: "PRJ-1001",
       description:
         "Construction of a 25-story commercial office tower in the downtown core.",
-      status: Status.ACTIVE,
+      status: ProjectStatus.Active,
       startDate: "2025-03-01",
       endDate: undefined,
       estimatedCompletionDate: "2026-11-30",
@@ -30,7 +30,7 @@ export async function getProjects(): Promise<Project[]> {
       code: "PRJ-1002",
       description:
         "Mixed-use residential development with retail space on the ground floor.",
-      status: Status.PLANNING,
+      status: ProjectStatus.Planning,
       startDate: "2026-06-01",
       endDate: undefined,
       estimatedCompletionDate: "2028-02-15",
@@ -52,7 +52,7 @@ export async function getProject(projectId: string): Promise<Project> {
     code: "PRJ-1001",
     description:
       "Construction of a 25-story commercial office tower in the downtown core.",
-    status: Status.ACTIVE,
+    status: ProjectStatus.Active,
     startDate: "2025-03-01",
     endDate: undefined,
     estimatedCompletionDate: "2026-11-30",
@@ -75,7 +75,7 @@ export async function createProject(
     code: "PRJ-1002",
     description:
       "Mixed-use residential development with retail space on the ground floor.",
-    status: Status.PLANNING,
+    status: ProjectStatus.Planning,
     startDate: "2026-06-01",
     endDate: undefined,
     estimatedCompletionDate: "2028-02-15",
@@ -101,7 +101,7 @@ export async function updateProject(
     code: "PRJ-1002",
     description:
       "Mixed-use residential development with retail space on the ground floor.",
-    status: Status.PLANNING,
+    status: ProjectStatus.Active,
     startDate: "2026-06-01",
     endDate: undefined,
     estimatedCompletionDate: "2028-02-15",
